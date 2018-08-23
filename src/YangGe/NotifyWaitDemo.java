@@ -19,13 +19,15 @@ package YangGe;
  * 2.1  判断
  * 2.2  干活
  * 2.3  通知
+ * 多线程判断用while（就像过安检）
  */
 class ShareData {
 	private int number = 0;
 
 	public synchronized void increment() throws InterruptedException {
 		//判断
-		if (number != 0) {
+		while (number!=0){
+		//if (number != 0) {
 			this.wait ();
 		}
 		//干活
@@ -37,7 +39,8 @@ class ShareData {
 
 	public synchronized void decrement() throws InterruptedException {
 		//判断
-		if (number == 0) {
+		while (number == 0) {
+		//if (number == 0) {
 			this.wait ();
 		}
 		//干活
@@ -52,25 +55,57 @@ class ShareData {
 public class NotifyWaitDemo {
 	public static void main(String[] args) {
 		ShareData sd = new ShareData();
-		new Thread (() -> {
-			for (int i = 1; i <= 10; i++) {
-				try {
-					sd.increment ();
+		new Thread(() -> {
+			for (int i = 1; i <=10; i++)
+			{
+				try
+				{
+					Thread.sleep(200);
+					sd.increment();
 				} catch (InterruptedException e) {
-					e.printStackTrace ();
+					e.printStackTrace();
 				}
 			}
-		}, "AA").start ();
+		}, "AA").start();
 
-
-		new Thread (() -> {
-			for (int i = 1; i <= 10; i++) {
-				try {
-					sd.decrement ();
+		new Thread(() -> {
+			for (int i = 1; i <=10; i++)
+			{
+				try
+				{
+					Thread.sleep(300);
+					sd.decrement();
 				} catch (InterruptedException e) {
-					e.printStackTrace ();
+					e.printStackTrace();
 				}
 			}
-		}, "BB").start ();
+		}, "BB").start();
+
+		new Thread(() -> {
+			for (int i = 1; i <=10; i++)
+			{
+				try
+				{
+					Thread.sleep(400);
+					sd.increment();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}, "CC").start();
+
+		new Thread(() -> {
+			for (int i = 1; i <=10; i++)
+			{
+				try
+				{
+					Thread.sleep(500);
+					sd.decrement();
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+			}
+		}, "DD").start();
+
 	}
 }
