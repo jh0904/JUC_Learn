@@ -47,11 +47,11 @@ class Phone {
 		System.out.println ("----------------SMS");
 	}
 
-	public  synchronized void sendEmail() throws Exception {
+	public static synchronized void sendEmail() throws Exception {
 		System.out.println ("----------------Email");
 	}
-	public  void openPhone() throws Exception {
-		System.out.println ("----------------Open");
+	public  void openPC() throws Exception {
+		System.out.println ("----------------openPC");
 	}
 }
 
@@ -70,9 +70,9 @@ public class Lock_8 {
 		Thread.sleep (100);
 		new Thread (() -> {
 			try {
-				phone.sendEmail ();
-				//phone2.openPhone ();
-				//phone2.sendEmail ();
+				//phone.sendEmail ();
+				phone2.sendEmail ();
+				//phone.openPC ();
 			} catch (Exception e) {
 				e.printStackTrace ();
 			}
