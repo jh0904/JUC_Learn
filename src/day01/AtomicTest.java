@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * 解析：int temp=i;
  * i=i+1;
  * i=temp;
- * 二、原子变量：jdk5之后，java.util.concurret.atomic包下提供了常用的原子变量
+ * 二、原子变量：jdk5之后，java.util.concurrent.atomic包下提供了常用的原子变量
  *      1.volatile 保证内存可见性
  *      2.CAS算法(Compare-And-Swap) 保证数据的原子性
  *          CAS算法是硬件对于并发操作共享数据的支持。
