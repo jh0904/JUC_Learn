@@ -35,9 +35,9 @@ class ShareResource {
 				c1.await ();
 			}
 			//干活
-			for (int i = 1; i <= 5; i++) {
-				System.out.println (Thread.currentThread ().getName () + "\t" + i + "\t totalLoop :" + totalLoop);
-			}
+			//for (int i = 1; i <= 5; i++) {
+				System.out.println (Thread.currentThread ().getName ()  + "\t totalLoop :" + totalLoop);
+			//}
 			//通知
 			number = 2;
 			c2.signal ();
@@ -56,9 +56,9 @@ class ShareResource {
 				c2.await ();
 			}
 			//干活
-			for (int i = 1; i <= 5; i++) {
-				System.out.println (Thread.currentThread ().getName () + "\t" + i + "\t totalLoop :" + totalLoop);
-			}
+			//for (int i = 1; i <= 5; i++) {
+				System.out.println (Thread.currentThread ().getName ()  + "\t totalLoop :" + totalLoop);
+			//}
 			//通知
 			number = 3;
 			c3.signal ();
@@ -76,9 +76,9 @@ class ShareResource {
 				c3.await ();
 			}
 			//干活
-			for (int i = 1; i <= 5; i++) {
-				System.out.println (Thread.currentThread ().getName () + "\t" + i + "\t totalLoop :" + totalLoop);
-			}
+			//for (int i = 1; i <= 5; i++) {
+				System.out.println (Thread.currentThread ().getName () + "\t totalLoop :" + totalLoop);
+			//}
 			//通知
 			number = 1;
 			c1.signal ();
